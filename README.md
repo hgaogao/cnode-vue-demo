@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/14a425d8-c0dc-4f38-904e-cb7434aafdf7/deploy-status)](https://app.netlify.com/sites/yigeiwoligiaogiao/deploys)
 # cnode
 
-> A Vue.js project
+> 一个由vue+vant+vue-router+axios写的cnode移动端页面
 
 ## Build Setup
 
