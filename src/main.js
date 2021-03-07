@@ -4,9 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axiosinit from './api'
+import api from './api/api'
 
 Vue.config.productionTip = false
 Vue.prototype.axios = axiosinit
+Vue.prototype.$api = api
 
 import { Button } from 'vant';
 import { Col, Row } from 'vant';
@@ -20,6 +22,7 @@ import { Cell, CellGroup } from 'vant';
 import { Popup } from 'vant';
 import { Skeleton } from 'vant';
 import { Divider } from 'vant';
+
 
 Vue.use(Divider);
 Vue.use(Skeleton)

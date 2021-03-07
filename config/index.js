@@ -10,8 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
-
+    proxyTable: {
+      // '/apis': {
+      //   target: 'https://cnodejs.org/api/v1',    //设置你调用的接口域名和端口号
+      //   changeOrigin: true,    //true表示允许跨域，有人说false也可以，我没试过
+      //   pathRewrite: {
+      //     '/apis': ''   //请求接口时直接用/def = http://123.456.789.123:8081/abc
+      //   }
+      // }
+    },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
@@ -20,7 +27,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */

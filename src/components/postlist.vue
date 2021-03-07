@@ -27,7 +27,6 @@
           <span v-else :class="item.tab" class="tab">{{ item.tab | tab }}</span
           >{{ item.title }}
         </div>
-        <!-- <div class="info">{{ item.reply_count }}/{{ item.visit_count }}</div> -->
       </van-cell>
     </van-list>
   </van-pull-refresh>
@@ -38,7 +37,6 @@ import userInfo from "./userInfo.vue";
 export default {
   components: { userInfo },
   name: "postlist",
-  components: { userInfo },
   props: ["id"],
   data() {
     return {

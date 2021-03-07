@@ -49,6 +49,7 @@ import Comment from "@/components/comment.vue";
 import Header from "@/components/header.vue";
 import Suspension from "@/components/suspension.vue";
 import UserInfo from "../components/userInfo.vue";
+
 export default {
   name: "articlePage",
   components: {
@@ -71,19 +72,18 @@ export default {
     back() {
       history.back();
     },
-    async http(val) {
-      const articleData = await this.axios.get(`topic/${val}`);
-      const authorData = await this.axios.get(
-        `user/${articleData.data.author.loginname}`
+    async onLoad(id) {
+      const articleData = await this.$api.topics.getTopicsContent(id);
+      const authorData = await this.$api.user.getUserInfo(
+        articleData.data.author.loginname
       );
-      console.log(articleData);
-      console.log(authorData);
       return { articleData: articleData, authorData: authorData };
     },
 
     // 调用请求获取到异步结果
-    setData(val) {
-      this.http(val).then((ret) => {
+    setData(id) {
+      this.onLoad(id).then((ret) => {
+        console.log(ret);
         this.articleData = ret.articleData.data;
         this.authorData = ret.authorData.data;
         this.loging = false;

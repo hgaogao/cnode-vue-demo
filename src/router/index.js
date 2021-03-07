@@ -12,6 +12,10 @@ export default new Router({
       path: '/',
       name: 'root',
       component: Home,
+      meta: {
+        keepAlive: true
+      }
+
     },
     {
       path: '/tab',
