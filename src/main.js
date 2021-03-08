@@ -5,7 +5,9 @@ import App from './App'
 import router from './router'
 import axiosinit from './api'
 import api from './api/api'
+import VueCookie from 'vue-cookie';
 
+Vue.use(VueCookie);
 Vue.config.productionTip = false
 Vue.prototype.axios = axiosinit
 Vue.prototype.$api = api
@@ -22,8 +24,15 @@ import { Cell, CellGroup } from 'vant';
 import { Popup } from 'vant';
 import { Skeleton } from 'vant';
 import { Divider } from 'vant';
+import { Toast } from 'vant';
+import { NavBar } from 'vant';
+import { Form } from 'vant';
+import { Field } from 'vant';
 
-
+Vue.use(Field);
+Vue.use(Form);
+Vue.use(NavBar);
+Vue.use(Toast);
 Vue.use(Divider);
 Vue.use(Skeleton)
 Vue.use(Popup);

@@ -10,9 +10,9 @@ import qs from "qs"
 // });
 axios.defaults.baseURL = 'https://cnodejs.org/api/v1';
 axios.defaults.timeout = 10000; //超时  时间
-axios.defaults.headers['Content-Type'] = 'application/x-www-from-urlencoded';//设置post请求头 告知服务器请求的主体
+axios.defaults.headers['Content-Type'] = 'application/json';//设置post请求头 告知服务器请求的主体
 // axios.defaults.withCredentials = true; //设置CORS跨域允许携带资源凭证
-axios.defaults.transformRequest = data => qs.stringify(data);
+// axios.defaults.transformRequest = data => qs.stringify(data);
 axios.defaults.paramsSerializer = data => qs.stringify(data);
 
 
@@ -40,7 +40,7 @@ axios.interceptors.response.use(response => {
     if (error.response) {
         switch (error.response.status) {
             case 401:
-
+                return { success: false };
                 break;
 
             default:

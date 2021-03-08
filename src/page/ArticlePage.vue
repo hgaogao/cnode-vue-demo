@@ -1,14 +1,15 @@
 <template>
   <div>
-    <Header />
+    <!-- <Header /> -->
+    <van-nav-bar
+      :title="articleData.title"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+    />
     <div class="article">
-      <div v-if="loging">
-        <van-skeleton title :row="10" />
-      </div>
-      <div v-else>
-        <!-- 正文 -->
-        <Article :articleData="articleData" />
-      </div>
+      <!-- 正文 -->
+      <Article :articleData="articleData" />
 
       <!-- 评论区 -->
       <Comment :comments="articleData.replies" />
@@ -49,9 +50,11 @@ import Comment from "@/components/comment.vue";
 import Header from "@/components/header.vue";
 import Suspension from "@/components/suspension.vue";
 import UserInfo from "../components/userInfo.vue";
+import mixinUser from "../mixins/user";
 
 export default {
   name: "articlePage",
+  mixins: [mixinUser],
   components: {
     Header,
     Article,
@@ -61,7 +64,6 @@ export default {
   },
   data() {
     return {
-      loging: true,
       articleData: [],
       authorData: [],
       offsetTop: -54, //设置顶部搜索栏吸附后默认隐藏
@@ -69,11 +71,18 @@ export default {
     };
   },
   methods: {
+    onClickLeft() {
+      this.back();
+    },
     back() {
       history.back();
     },
     async onLoad(id) {
-      const articleData = await this.$api.topics.getTopicsContent(id);
+      var token = this.getTokenNoRedirect() || "";
+      const articleData = await this.$api.topics.getTopicsContent(
+        token || "",
+        id
+      );
       const authorData = await this.$api.user.getUserInfo(
         articleData.data.author.loginname
       );
@@ -83,10 +92,8 @@ export default {
     // 调用请求获取到异步结果
     setData(id) {
       this.onLoad(id).then((ret) => {
-        console.log(ret);
         this.articleData = ret.articleData.data;
         this.authorData = ret.authorData.data;
-        this.loging = false;
       });
     },
   },
