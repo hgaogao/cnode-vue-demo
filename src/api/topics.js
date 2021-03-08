@@ -10,7 +10,35 @@ export default {
             },
         })
     },
-    getTopicsContent(id) {
-       return axios.get(`topic/${id}`);
+    getTopicsContent(token, id) {
+        return axios({
+            method: 'get',
+            url: `topic/${id}`,
+            params: {
+                accesstoken: token
+            }
+        });
+    },
+    collect(topic_id, token) {
+        // post提交josn格式要用这种形式
+        return axios({
+            method: 'post',
+            url: 'topic_collect/collect',
+            data: {
+                accesstoken: token,
+                topic_id: topic_id
+            }
+        })
+    },
+    de_collect(topic_id, token) {
+        // post提交josn格式要用这种形式
+        return axios({
+            method: 'post',
+            url: 'topic_collect/de_collect',
+            data: {
+                accesstoken: token,
+                topic_id: topic_id
+            }
+        })
     }
 }

@@ -6,34 +6,58 @@
           <img src="../assets/cnodejs_light.svg" />
         </router-link>
       </van-col>
-      <van-col span="18">
+      <van-col span="14">
         <van-search
+          class="search"
           v-model="value"
           background="#333"
           placeholder="请输入搜索关键词"
         />
       </van-col>
-      <!-- <van-col span="4">
-      <van-button size="small" style="font-size: 0.3rem" color="#75b504"
-        >按钮</van-button
-      >
-    </van-col> -->
+      <van-col span="4">
+        <div v-if="user.success">
+          <img class="avatar" :src="user.avatar_url" alt="" />
+        </div>
+        <div v-else class="manager" @click="login">
+          <van-icon name="user-circle-o" size="30" color="#ffffff" />
+        </div>
+      </van-col>
     </van-row>
     <slot></slot>
   </van-sticky>
 </template>
 
 <script>
+import router from "../router";
+import mixinUser from "../mixins/user";
 export default {
   name: "Header",
+  mixins: [mixinUser],
   data() {
     return {
+      user: {},
       value: "",
       offsetTop: -54, //设置顶部搜索栏吸附后默认隐藏
       scrollTop: 0, //上拉的距离默认为零
     };
   },
+  watch: {
+    $route(to, from) {
+      if (from.name == "login") {
+        var user = this.getUserInfo();
+        this.user = user;
+      }
+    },
+  },
+  created() {
+    var user = this.getUserInfo();
+    this.user = user;
+  },
+
   methods: {
+    login() {
+      router.push({ name: "login" });
+    },
     scroll(res) {
       var moveSize = this.scrollTop - res.scrollTop; //移动的距离
       var topMoveSize = this.offsetTop + moveSize; //搜索栏移动后的距离
@@ -70,5 +94,9 @@ export default {
 .logo img {
   max-height: 1.5rem;
   margin-left: 10px;
+}
+.avatar {
+  width: 35px;
+  border-radius: 50%;
 }
 </style>

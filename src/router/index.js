@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/page/Home'
 import ArticlePage from '@/page/ArticlePage'
+import Login from '@/page/Login'
 
 Vue.use(Router)
 
@@ -34,6 +35,12 @@ export default new Router({
       path: '/article/:id',
       name: 'articlePage',
       component: ArticlePage
+
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
 
     }
   ],
