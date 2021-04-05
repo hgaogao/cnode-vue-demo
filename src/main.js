@@ -30,6 +30,7 @@ import { Toast } from 'vant';
 import { NavBar } from 'vant';
 import { Form } from 'vant';
 import { Field } from 'vant';
+import './registerServiceWorker'
 
 Vue.use(Field);
 Vue.use(Form);
