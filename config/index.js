@@ -11,13 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/apis': {
-        target: 'https://cnodejs.org/api/v1',    //设置你调用的接口域名和端口号
-        changeOrigin: true,    //true表示允许跨域，有人说false也可以，我没试过
-        pathRewrite: {
-          '/apis': ''   //请求接口时直接用/apis = http://123.456.789.123:8081/abc
-        }
-      }
+      // '/apis': {
+      //   target: 'https://cnodejs.org/api/v1',    //设置你调用的接口域名和端口号
+      //   changeOrigin: true,    //true表示允许跨域，有人说false也可以，我没试过
+      //   pathRewrite: {
+      //     '/apis': ''   //请求接口时直接用/apis = http://123.456.789.123:8081/abc
+      //   }
+      // }
     },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
