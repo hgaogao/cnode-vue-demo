@@ -6,6 +6,8 @@ import router from './router'
 import axiosinit from './api'
 import api from './api/api'
 import VueCookie from 'vue-cookie';
+import './registerServiceWorker'
+
 
 Vue.use(VueCookie);
 Vue.config.productionTip = false

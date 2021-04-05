@@ -10,6 +10,10 @@ export default {
             },
         })
     },
+
+    /**
+     * 获取主题
+     */
     getTopicsContent(token, id) {
         return axios({
             method: 'get',
@@ -19,6 +23,9 @@ export default {
             }
         });
     },
+    /**
+     * 收藏主题
+     */
     collect(topic_id, token) {
         // post提交josn格式要用这种形式
         return axios({

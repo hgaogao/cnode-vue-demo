@@ -79,13 +79,16 @@ export default {
       tab: "",
     };
   },
+  created() {
+    console.log(this);
+  },
   methods: {
     onLoad(id) {
       this.$api.topics
         .getTopics(id || this.id, this.page++, 10)
         .then((response) => {
           if (this.tabChange) {
-          //合并拼接list数组
+            //合并拼接list数组
             this.listData = this.listData.concat(response.data);
           } else {
             // 判断是否为同一个列表，不同的列表重新替换数组
